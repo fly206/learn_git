@@ -1,13 +1,18 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-
+//
+//链表相关练习
+//链表结构体建立
+//
 typedef struct list {
     int a;
     char c;
     struct list *next;
 }list;
-
+//
+//链表创建
+//
 void create_list(list *head)
 {
     list *node=NULL;
@@ -33,7 +38,9 @@ void create_list(list *head)
     }
     printf("ok\n");
 }
-
+//
+//将链表内容输出屏幕
+//
 void print_list(list *head)
 {
     list *node=NULL;
@@ -43,7 +50,9 @@ void print_list(list *head)
         node=node->next;
     }
 }
-
+//
+//链表清除
+//
 void destroy_list(list *head)
 {
     list *node=NULL;
@@ -54,7 +63,9 @@ void destroy_list(list *head)
         free(node);
     }
 }
-
+//
+//链表复制
+//
 void cp_list(list *head,list *lis2)
 {
     list *node1=NULL;
@@ -77,7 +88,9 @@ void cp_list(list *head,list *lis2)
     }
     free(cp);
 }
-
+//
+//链表节点删除
+//
 void det_list(list *head)
 {
     list *node=NULL;
@@ -115,7 +128,9 @@ void det_list(list *head)
     }
     print_list(head);
 }
-
+//
+//链表赋值
+//
 void scan_list(list *head)
 {
     list *node=NULL;
