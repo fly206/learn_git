@@ -1,0 +1,36 @@
+string类成员:
+① 构造函数:String(const char* str = NULL);
+② 拷贝构造函数:String(const String& str);
+③ 析构函数:~String(void);
+④ 赋值运算:String& operator=(const String& str);
+⑤ 字符串连接:String operator+(const String& str);
+⑥ 判断相等:bool operator==(const String& str);
+⑦ 数组索引:char operator[](int idx);
+⑧ 返回长度:int getLength();
+⑨ 私有变量保存字符串: private: char* pData;
+
+string具体实现:
+① 构造函数用于初始化对像,对应String用于对string类初始化,判断str是否有值,
+无值则pData赋值为0,此时利用this指针.当str有值时,new一个char数组,长度为
+str+1,将str的值赋給pData.(由此可知:string类并非利用链表原理,而是单纯构
+建了一个class对象,其中包含一个char型指针,用于指向一个不定长char数组,这个
+数组用于存放string的具体内容)
+② 拷贝构造函数,用于两个对象完成"复制"操作,这里用于string复制.
+③ 析构函数,赋值为0.
+④ operator c++的关键词,用于重构运算符:
+	赋值(=):判断pData是否为0,若pData为0,则释放pData内容.判断str.pData
+是否为0,若为0,则pData为0,否则申请char数组长度为str.pData+1,将str.pData
+内容复制到pData.
+	连接(+):判断pData是否为0,若pData为0,则pData内容为str.pData,判断
+str.pData是否为0,若为0,则pData为0,否则申请char数组长度为str.pData+pData+1,
+将str.pData接到pData内容后面.
+	相等(==):判断pData与str.pData内容对比,相等返回true,否则返回false.
+	索引([]):返回pData[idx].
+⑤ 长度,pData的长度.
+⑥ 另外定义了一个流输出:
+std::ostream& operator<<( std::ostream& os, const CMyString& str )
+{
+         os<< str.m_pData;
+         return os;
+}//流操作未详细研究.
+
